@@ -73,7 +73,7 @@ node --version  # Should be v22.12.0 or later
 Or compare directly:
 
 ```bash
-node --version | { read ver; [ "$(printf '%s\n' "v22.12.0" "$ver" | sort -V | head -1)" = "v22.12.0" ] && echo "Node version $ver is OK" || echo "Node version $ver must be v22.12.0 or later" }
+node --version | { read v; [ "$(printf '%s\n' "v22.12.0" "$v" | sort -V | head -1)" = "v22.12.0" ] && echo "Node version $v is OK" || { echo "Node version $v must be v22.12.0 or later" >&2; exit 1; }; }
 ```
 
 ### Docker Security
